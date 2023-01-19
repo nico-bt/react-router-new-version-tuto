@@ -6,10 +6,12 @@ import Home from "./pages/Home";
 import Faq from "./pages/help/Faq";
 import Contact from "./pages/help/Contact";
 import NotFound from "./pages/NotFound";
+import Careers, { careersLoader } from "./pages/careers/Careers";
 
 // Layouts
 import RootLayout from "./layouts/RootLayout";
 import HelpLayout from "./layouts/HelpLayout";
+import CareersLayout from "./layouts/CareersLayout";
 
 
 const router = createBrowserRouter(
@@ -21,6 +23,15 @@ const router = createBrowserRouter(
       <Route path="/help" element={<HelpLayout />} >
         <Route path="faq" element={<Faq />} />
         <Route path="contact" element={<Contact />} />
+      </Route>
+
+      <Route path="/careers" element={<CareersLayout />}>
+        <Route 
+          index 
+          element={<Careers />} 
+          // Loader es una funcion que corre para cargar data antes de que cargue el component.
+          // Pasa la data al component con el useLoaderData() hook
+          loader={careersLoader}/>
       </Route>
 
       {/* Si no matchea con ninguna de las routes anteriores. Render dentro de RootLayout */}
