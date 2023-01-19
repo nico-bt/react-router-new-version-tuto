@@ -5,6 +5,7 @@ import About from "./pages/About";
 import Home from "./pages/Home";
 import Faq from "./pages/help/Faq";
 import Contact from "./pages/help/Contact";
+import NotFound from "./pages/NotFound";
 
 // Layouts
 import RootLayout from "./layouts/RootLayout";
@@ -21,6 +22,9 @@ const router = createBrowserRouter(
         <Route path="faq" element={<Faq />} />
         <Route path="contact" element={<Contact />} />
       </Route>
+
+      {/* Si no matchea con ninguna de las routes anteriores. Render dentro de RootLayout */}
+      <Route path="*" element={<NotFound />} />
 
     </Route>
   )
