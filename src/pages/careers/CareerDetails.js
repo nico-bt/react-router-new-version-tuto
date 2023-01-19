@@ -4,7 +4,7 @@ export default function CareerDetails() {
   const { id } = useParams()
   // Con el id acá podríamos hacer un fetch en un useEfect o alguna otra cosa
   // En este caso, el item lo buscamos con el loader abajo. Que puede acceder a los "params"
-  
+
   const career = useLoaderData()
 
   return (
@@ -24,6 +24,10 @@ export const careerDetailsLoader = async ({ params }) => {
   const { id } = params
 
   const res = await fetch('http://localhost:4000/careers/' + id)
+
+  if(!res.ok) {
+    throw Error("Could find that career")
+  }
 
   return res.json()
 }
